@@ -1,5 +1,7 @@
 - Unix
 - Bash
+- Python
+- Soft-skills
 - Git
 - HTML
 - CSS
