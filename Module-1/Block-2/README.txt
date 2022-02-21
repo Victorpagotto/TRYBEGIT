@@ -1,0 +1,1 @@
+Neste bloco eu aprendi a como usar git, github e conceitos de conectar repositórios locais e remotos no github, bem como os comandos para realizar essa tarefa e como criar um bom portifólio a partir disso.
