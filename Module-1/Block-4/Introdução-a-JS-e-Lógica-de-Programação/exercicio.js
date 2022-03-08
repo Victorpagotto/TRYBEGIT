@@ -8,6 +8,7 @@ numberSet = [1213, 123, 533];
 let cost = 5;
 let sellPrice = 9;
 let produNumber = 1000;
+let salary = 3500.00;
 
 function sumUp (angles){
     let sumUp=null;
@@ -128,25 +129,69 @@ function profiting(cost, sellPrice, produNumber){
     cost = (cost/5) + cost;
     return (sellPrice - cost)*produNumber;
 }
+function taxing (salary){
+    let inss;
+    let ir;
+    let parcela;
+    if (salary<=1556.94 && salary>=0){
+        inss=0.08;
+    }else if (salary>=1556.95 && salary<=2594.92){
+        inss=0.09;
+    }else if(salary>=2594.93 && salary<=5189.82){
+        inss=0.11;
+    }else if(salary>5189.82){
+        inss=0.11;
+    }else{
+        return 'Invalid salary. Probably negative.';
+    }
 
-console.log('------------Exercicio------------');
+    if (salary*inss<=570.88){
+        salary = salary-(salary*inss);
+    }else{
+        salary = salary - 570.88;
+        if (salary<0){
+            return 'error';
+        }
+    }
+    
+    if (salary<=1903.98 && salary>=0){
+        ir=0;
+        parcela=0;
+    }else if(salary>=1903.99 && salary<=2826.65){
+        ir=0.075;
+        parcela=142.80;
+    }else if(salary>=2826.66 && salary<=3751.05){
+        ir=0.15;
+        parcela=354.80;
+    }else if (salary>=3751.06 && salary<=4664.68){
+        ir=0.225;
+        parcela=636.13;
+    }else if(salary>4664.68){
+        ir=0.275;
+        parcela=869.36;
+    }else{
+        return 'Invalid salary. Probably negative.';
+    }
+    return (salary-((salary*ir)-parcela));
+}
+
+console.log('------------Exercicio 1------------');
 allOperators(a,b);
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 2 e 3--------');
 console.log(biggestNumber(arr));
-console.log('------------Exercicio------------');
-console.log(angleTriangle(angles));
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 4------------');
 positiveOrNegative(c);
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 5------------');
+console.log(angleTriangle(angles));
+console.log('------------Exercicio 6------------');
 chessPiece('Queen');
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 7------------');
 console.log(gradeCalculator(grade));
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 8------------');
 console.log(pairOrNotPair(numberSet));
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 9------------');
 console.log(NotPair(numberSet));
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 10-----------');
 console.log(profiting(cost, sellPrice, produNumber));
-console.log('------------Exercicio------------');
+console.log('------------Exercicio 11-----------');
 console.log(taxing(salary));
-console.log('------------Exercicio------------');
