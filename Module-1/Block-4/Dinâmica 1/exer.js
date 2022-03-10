@@ -35,20 +35,18 @@ function divisibleFor3(init, end){
 }
 //##EX3##
 function JOKENPO(player1, player2){
-    console.log('1=pedra, 2=tesoura, 3=papel');
     console.log('Jogador 1 foi:'+player1);
     console.log('Jogador 2 foi:'+player2);
-    console.log('Resultado:')
     if (player1===player2){
-        console.log('Empate')
+        return 'Empate'
     }else if(player2===player1+1){
-        console.log('Jogador 1 vence.')
+        return'Jogador 1 vence.'
     }else if(player1===player2+1){
-        console.log('Jogador 2 vence')
+        return 'Jogador 2 vence'
     }else if(player1===1 && player2===3){
-        console.log('Jogador 2 vence.')
+        return 'Jogador 2 vence.'
     }else if(player2===1 && player1===3){
-        console.log('Jogador 1 vence.')
+        return 'Jogador 1 vence.'
     }
 }
 //##EX4##
@@ -63,12 +61,12 @@ function age (idade){
 
 //##EX5##
 function AgeComparator(age1,age2,age3){
-    console.log('Marcella: '+age1);
-    console.log('Carlos: '+age2);
-    console.log('Camila: '+age3);
     let Marcella = age1;
     let Carlos = age2;
     let Camila = age3;
+    console.log('Marcella: '+age1);
+    console.log('Carlos: '+age2);
+    console.log('Camila: '+age3);
     let maisNovo = ""
     if (Marcella < Camila && Marcella < Carlos){
         maisNovo = "Marcella, com " + age1 + ' anos.';
@@ -84,7 +82,9 @@ console.log(sumUp(50, 100));
 console.log('-------Ex2-------');
 console.log(divisibleFor3(1,125));
 console.log('-------Ex3-------');
-JOKENPO(randomNumber(1,3), randomNumber(1,3));
+console.log('1=pedra, 2=tesoura, 3=papel');
+console.log('Resultado:')
+console.log(JOKENPO(randomNumber(1,3), randomNumber(1,3)));
 console.log('-------Ex4-------');
 console.log(age(randomNumber(1,32)));
 console.log('-------Ex5-------');
