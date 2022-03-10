@@ -95,3 +95,16 @@ console.log(exercicio_8(25));
 console.log('------------9------------');
 console.log(exercicio_9(25));
 console.log('-------------------------');
+
+
+function divisibleFor3(){
+    let sumUp=null;
+    for (let i=1;i<=125;i++){
+        if (i%3===0){
+            sumUp++;
+        }
+    }
+    return sumUp;
+}
+
+console.log(divisibleFor3());
