@@ -2,7 +2,8 @@ let wordSet=['arara','desenvolvimento'];
 let numSet1=[2, 3, 6, 7, 10, 1];
 let numSet2=[2, 4, 6, 7, 10, 0, -3];
 let nameSet=['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana'];
-let numSet3=[2, 3, 2, 5, 8, 2, 3];
+let numSet3=[3, 2, 2, 5, 8, 2, 3];
+let word=['joaofernando', 'nando'];
 
 function reverse(arr){
     let reversed=[];
@@ -74,6 +75,39 @@ function biggestword (arr){
     }
     return arr[biggestNumber(aux)[1]];
 };
+function repeatReader (arr){
+    let aux=[];
+    for (let x=0; x<arr.length;x++){
+        aux[x]=0;
+    }
+    for (let x=0; x<arr.length;x++){
+        aux[arr.indexOf(arr[x])]++;
+    };
+    return arr[biggestNumber(aux)[1]];
+}
+
+function summation (num){
+    let sumUp=0;
+    for (let x=1; x<=num; x++){
+        sumUp+=x;
+    }
+    return sumUp;
+}
+
+function wordEnding (word, ending){
+    let check=0;
+    let aux=word.slice((word.length-1)-(ending.length-1), word.length);
+    for (let x=0; x<ending.length; x++){
+        if (aux[x]==ending[x]){
+            check++;
+        }
+    }
+    if (check===ending.length){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 console.log('----------1----------');
 printPal(wordSet);
@@ -83,3 +117,9 @@ console.log('----------3----------');
 console.log(smallestNumber(numSet2)[1]);
 console.log('----------4----------');
 console.log(biggestword(nameSet));
+console.log('----------5----------');
+console.log(repeatReader(numSet3));
+console.log('----------6----------');
+console.log(summation(5));
+console.log('----------7----------');
+console.log(wordEnding(word[0], word[1]))
