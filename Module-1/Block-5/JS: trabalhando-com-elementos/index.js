@@ -7,7 +7,8 @@ function tagWText(tag, text = '', parent = document.getElementsByTagName('body')
 function classer(element = '', attribute, type = 'class') {
     element.setAttribute(type, attribute);
 }
-let firstH1 = tagWText('h1', 'Exercício 5.2 - JavaScript DOM');
+let h1 = tagWText('h1', 'Exercício 5.2 - JavaScript DOM');
+classer(h1, 'title');
 let main = tagWText('main');
 classer(main, 'main-content');
 //Section 1 center
@@ -28,8 +29,14 @@ for (let i = 1; i < 11; i += 1) {
     tagWText('li', `${i}`, list);
 }
 //3h's
-tagWText('h3','A h3', main);
-tagWText('h3','A h3', main);
-tagWText('h3','A h3', main);
+for (let i = 0; i < 3; i += 1) {
+    classer(tagWText('h3', 'Descrição de alguma coisa.', main), 'description');
+}
+//Part 2 after 3:
+main.removeChild(section2);
+section3.style.margin = 'auto';
+section1.parentElement.style.backgroundColor = 'wheat';
+list.lastChild.remove();
+list.lastChild.remove();
 
 
