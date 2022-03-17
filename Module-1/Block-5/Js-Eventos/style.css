@@ -21,11 +21,27 @@
     text-align: center;
     width: 100%;
   }
-  
+
+  .taskList {
+    padding: 10px;
+    list-style-type: none;
+  }
+  .divColor {
+    background-color: aquamarine;
+    position: relative;
+    left: 40px;
+  }
+  .selected {
+    background-color: purple;
+  }
   #days {
     margin: 0;
   }
-  
+
+  .day {
+    line-height: 50px;
+    font-size: 1em;
+  }
   #days li {
     color: #777;
     display: inline-block;
