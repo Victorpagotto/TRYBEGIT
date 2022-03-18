@@ -1,0 +1,42 @@
+.archBox {
+    width: 120;
+    height: 20px;
+    text-align: center;
+    display: inline-block;
+    padding: 5px;
+    margin-top: 8px;
+    background-color: rgb(138, 136, 136);
+}
+.archElement {
+    position: relative;
+    bottom: 15px;
+    color: white;
+}
+#body {
+    background-color: rgb(204, 193, 193);
+}
+#bodyHeader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    background-color: rgb(79, 82, 81);
+}
+#titleBox {
+    display: inline-block;
+}
+#pageTitle {
+    font-size: 3em;
+}
+#ArchiveNavBar {
+    position: relative;
+    top: 25px;
+    display: inline-block;
+    float: right;
+    margin-right: 3%;
+    padding: 10px;
+    border: solid 3px rgb(138, 136, 136);
+}
+#archives {
+    padding: 0px;
+}
