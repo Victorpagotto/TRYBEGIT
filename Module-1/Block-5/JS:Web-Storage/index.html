@@ -16,7 +16,13 @@
             <div class="archBox">
                 <ul class="navBarElement userNavBar">
                     <li class="listElement"><button class="btnnav topNavbtn" id="usersBtn">Users</button></li>
-                    <li class="listElement"></li>
+                    <li class="listElement"><div class="scrollDiv">
+                        <ul>
+                            <li>
+                                <div class="colorDiv"></div>
+                            </li>
+                        </ul>
+                    </div></li>
             </div>
             <div class="archBox">
                 <ul class="navBarElement userNavBar">
@@ -27,7 +33,7 @@
         <nav id="navBar">
             <ul class="navBarElement">
                 <li class="listElement"><button class="btnnav" id="bgColorBtn">BG. Color</button></li>
-                <li class="listElement"></li>
+                <li class="listElement" id="colorList"></li>
             </ul>
             <ul class="navBarElement">
                 <li class="listElement"><button class="btnnav" id="textColorBtn">Text Color</button></li>
@@ -42,7 +48,7 @@
                 <li class="listElement"></li>
             </ul>
             <ul class="navBarElement">
-                <li class="listElement"><button class="btnnav" id="fontSizeBtn">Font-Size</button></li>
+                <li class="listElement"><button class="btnnav" id="fontSizeBtn">Fonts</button></li>
                 <li class="listElement"></li>
             </ul>
         </nav>
@@ -50,7 +56,7 @@
     <main id='mainPage'>
         <div id="pageShape">
             <header id="pagesHeader">
-                <h1 id="pageTitle">Article Title</h1>
+                <h2 class="artTitle">Article Title</h2>
             </header>
             <article id="page">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque est sed nibh lacinia, id ullamcorper elit tristique. Integer velit massa, accumsan ut tellus et, vestibulum interdum metus. Fusce in nisl vitae nunc pellentesque malesuada. Sed porta fringilla velit sit amet feugiat. Nam sed augue rutrum, maximus mi quis, pharetra leo. Integer maximus odio ex, sed accumsan diam feugiat non. Mauris urna est, fringilla eget erat ut, vehicula dignissim nulla. Phasellus vel sollicitudin enim, quis finibus nulla. Vestibulum ac vestibulum diam, vitae venenatis mauris. Fusce dignissim imperdiet leo, vel malesuada felis consectetur eget.
@@ -66,4 +72,5 @@
         </div>
     </main>
 </body>
+<script src="script.js"></script>
 </html>
