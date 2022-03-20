@@ -24,7 +24,25 @@ let colors = ['black', 'silver', 'gray', 'white', 'maroon', 'red', 'purple'
 let fonts = ['Arial', 'Verdana', 'Helvetica', 'Tahoma', 'Trebuchet MS'
 ,'Times New Roman', 'Georgia', 'Garamond', 'Courier New', 'Brush Script MT'];
 let numRange = numberGenerate(100);
-
+//Data Storage
+let userDefault = {
+    name: 'default',
+    bodyColor: 'rgb(204, 193, 193);',
+    textColor: 'black',
+    textSize: '16px',
+    lineHeight: '18px',
+    fontFamily: 'Arial'
+};
+function loadingStorage() {
+    if (localStorage.users === undefined) {
+        let users = [userDefault];
+        localStorage.setItem('users', JSON.stringify(users));
+        return users;
+    } else {
+        return JSON.parse(localStorage.getItem('users'));
+    }
+}
+let userData = loadingStorage();
 //buttons
 let usersBtn = $.getElementById('usersBtn');
 let articlesBtn = $.getElementById('articlesBtn');
@@ -33,8 +51,19 @@ let textColorBtn = $.getElementById('textColorBtn');
 let textSizebtn = $.getElementById('textSizebtn');
 let lineSpaceBtn = $.getElementById('lineSpaceBtn');
 let fontTypeBtn = $.getElementById('fontTypeBtn');
+let articleTitle = $.getElementById('artTitle');
+let article = $.getElementById('page');
 
 //Bars Functions
+function closesAllScrolls(id) {
+    let target = $.getElementsByClassName('btnnav');
+    for (let i = 0; i < target.length; i += 1) {
+        if (target[i].id !== id) {
+            target[i].parentElement.parentElement.lastElementChild.innerHTML = '';
+            target[i].classList.remove('selected');
+        }
+    }
+}
 function createsScrollBox(parent) {
     let div  = CE('div','',parent);
     div.classList.add('scrollDiv');
@@ -76,6 +105,7 @@ function textColorOptions(uL, parent, event) {
     }
 }
 function colorOptions(event) {
+    closesAllScrolls(event.target.id);
     let parent = event.target.parentElement.parentElement.lastElementChild;
     if (event.target.classList.contains('selected') !== true) {
         event.target.classList.add('selected');
@@ -102,6 +132,7 @@ function textLiOptions(uL, parent, button, property, arr) {
     }
 }
 function textOptions(event) {
+    closesAllScrolls(event.target.id);
     let parent = event.target.parentElement.parentElement.lastElementChild;
     if (event.target.classList.contains('selected') !== true) {
         event.target.classList.add('selected');
@@ -122,17 +153,18 @@ function textOptions(event) {
         parent.innerHTML = '';
     }
 }
-function createsInput(parent) {
+function createsInput(parent, chosenClass) {
     let input = CE('input','',parent);
-    input.classList.add('buttonInput');
+    input.classList.add(chosenClass);
     input.setAttribute('type', 'text');
-    input.setAttribute('placeholder', 'Insert a number of pixels');
+    input.setAttribute('placeholder', 'Insert here');
     return input;
 }
 function sizeByTyping(trigger, property) {
+    closesAllScrolls(trigger.target.id);
     let parent = trigger.target.parentElement.parentElement.lastElementChild;
     parent.innerHTML = '';
-    let input = createsInput(parent);
+    let input = createsInput(parent, 'buttonInput');
     input.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             pageS[`${property}`] = `${event.target.value}px`;
@@ -142,6 +174,65 @@ function sizeByTyping(trigger, property) {
     input.addEventListener('mouseout', function() {
         parent.innerHTML = '';
     });
+}
+function changeTitle(event, chosenClass) {
+    let trigger = event.target;
+    let holder = trigger.innerHTML;
+    trigger.innerHTML = '';
+    input = createsInput(trigger, chosenClass);
+    input.value = '';
+    console.log('test');
+    input.addEventListener('keyup', function(event) {
+        if(event.key === 'Enter') {
+            trigger.innerHTML = input.value;
+        }
+        if(event.key === 'Escape') {
+            trigger.innerHTML = holder;
+        }
+        if(event.key === 'Enter' && event.target.value === '') {
+            trigger.innerHTML = holder;
+        }
+    });
+}
+function createsTextArea(target) {
+    let textBox = CE('textarea', '', target);
+    textBox.value = '';
+    textBox.setAttribute('rows', '35');
+    textBox.setAttribute('cols', '160');
+    return textBox;
+}
+function createsTextAreaButton(target) {
+    let textBtn = CE('button','Insert', target);
+    textBtn.classList.add('textInputBox');
+    textBtn.style.width = '80px';
+    textBtn.style.height = '20px';
+    return textBtn;
+}
+function changesText(event) {
+    let trigger = event.target;
+    let holder = trigger.innerHTML;
+    trigger.innerHTML = '';
+    let textBox = createsTextArea(event.target);
+    let textBtn = createsTextAreaButton(event.target);
+    textBtn.addEventListener('click', function() {
+        if (textBox.value !== '') {
+            trigger.innerHTML = textBox.value;
+        } else {
+            trigger.innerHTML = holder;
+        }
+    });
+    textBox.addEventListener('keyup', function(event) {
+        if (event.key === 'Escape') {
+            trigger.innerHTML = holder;
+        }
+    });
+}
+//Local Storage Data Management
+function userBar(event) {
+    let parent = event.target.parentElement.parentElement.lastElementChild;
+    if (event.target.classList.contains('selected') !== true) {
+        event.target.classList.add('selected');
+    }
 }
 //Code Execution.
 bgColorBtn.addEventListener('click', function(event) {
@@ -164,4 +255,13 @@ textSizebtn.addEventListener('dblclick', function(event) {
 });
 lineSpaceBtn.addEventListener('dblclick', function(event) {
     sizeByTyping(event, 'lineHeight');
+});
+articleTitle.addEventListener('dblclick', function(event) {
+    changeTitle(event, 'titleInputClass');
+});
+article.addEventListener('dblclick', function(event) {
+    changesText(event);
+});
+usersBtn.addEventListener('dblclick', function(event) {
+
 });

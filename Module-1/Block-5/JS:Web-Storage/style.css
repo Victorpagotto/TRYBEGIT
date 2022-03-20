@@ -52,7 +52,7 @@ li {
     height: 150px;
     background-color: antiquewhite;
     border: solid 3px rgb(79, 82, 81);
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: scroll;
     width: 154px;
 }
@@ -62,6 +62,10 @@ li {
     position: relative;
     right: 40px;
     cursor: pointer;
+    width: 124px;
+}
+.listItem:hover {
+    background-color:rgb(206, 195, 182)
 }
 .buttonInput {
     position: relative;
@@ -122,4 +126,14 @@ li {
     width: 70%;
     margin: auto;
     margin-top: 100px;
+}
+.titleInputClass {
+    width: 150px;
+    width: fit-content;
+    background-color: antiquewhite;
+    border: solid 2px rgb(79, 82, 81);
+    height: 20px;
+}
+.textInputBox {
+    background-color: antiquewhite;
 }
