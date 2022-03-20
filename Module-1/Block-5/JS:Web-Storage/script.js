@@ -4,9 +4,9 @@ function CE(element, text = '', parent = $.getElementById('body')) {
     parent.appendChild(eL);
     return eL;
 }
-
 const $ = document;
 const pageS = $.getElementById('page').style;
+let body = $.getElementsByTagName('body')[0];
 //data
 function numberGenerate(range) {
     let nums = [];
@@ -27,7 +27,7 @@ let numRange = numberGenerate(100);
 //Data Storage
 let userDefault = {
     name: 'default',
-    bodyColor: 'rgb(204, 193, 193);',
+    bodyColor: 'rgb(204, 193, 193)',
     textColor: 'black',
     textSize: '16px',
     lineHeight: '18px',
@@ -158,6 +158,7 @@ function createsInput(parent, chosenClass) {
     input.classList.add(chosenClass);
     input.setAttribute('type', 'text');
     input.setAttribute('placeholder', 'Insert here');
+    input.value = '';
     return input;
 }
 function sizeByTyping(trigger, property) {
@@ -173,13 +174,14 @@ function sizeByTyping(trigger, property) {
     });
     input.addEventListener('mouseout', function() {
         parent.innerHTML = '';
+        closesAllScrolls('');
     });
 }
-function changeTitle(event, chosenClass) {
+function changeTitle(event) {
     let trigger = event.target;
     let holder = trigger.innerHTML;
     trigger.innerHTML = '';
-    input = createsInput(trigger, chosenClass);
+    input = createsInput(trigger, 'titleInputClass');
     input.value = '';
     console.log('test');
     input.addEventListener('keyup', function(event) {
@@ -228,12 +230,91 @@ function changesText(event) {
     });
 }
 //Local Storage Data Management
+//User
+function loadUsers(uL) {
+    let arr = JSON.parse(localStorage.getItem('users'));
+    for (let i = 0; i < arr.length; i += 1) {
+        let li = CE('li', arr[i].name, uL);
+        li.classList.add('listItem');
+        li.addEventListener('click', function() {
+            console.log(arr[i].bodyColor);
+            body.style.backgroundColor = arr[i].bodyColor;
+            $.getElementById('pageShape').style.color = arr[i].textColor;
+            $.getElementById('pagesHeader').style.color = arr[i].textColor;
+            $.getElementById('page').style.fontSize = arr[i].textSize;
+            $.getElementById('page').style.lineHeight = arr[i].lineHeight;
+            $.getElementById('page').style.fontFamily = arr[i].fontFamily;
+            closesAllScrolls('');
+        });
+    }
+}
 function userBar(event) {
+    closesAllScrolls(event.target.id);
     let parent = event.target.parentElement.parentElement.lastElementChild;
     if (event.target.classList.contains('selected') !== true) {
         event.target.classList.add('selected');
+        let uL = createsScrollBox(parent);
+        loadUsers(uL, userData);
+    } else {
+        event.target.classList.remove('selected');
+        parent.innerHTML = '';
     }
 }
+function createConfigObject(nameValue) {
+    let config = {
+        name: nameValue,
+        bodyColor: $.getElementById('body').style.backgroundColor,
+        textColor: $.getElementById('pageShape').style.color,
+        textSize: $.getElementById('page').style.fontSize,
+        lineHeight: $.getElementById('page').style.lineHeight,
+        fontFamily: $.getElementById('page').style.fontFamily
+    }
+    console.log(config);
+    return config;
+}
+function AddUser(event) {
+    closesAllScrolls(event.target.id);
+    let parent = event.target.parentElement.parentElement.lastElementChild;
+    parent.innerHTML = '';
+    input = createsInput(parent, 'buttonInput');
+    input.classList.add('userButtonInputAdjustment');
+    input.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            if (deleteUser(event.target.value) === true) {
+                parent.innerHTML = '';
+                closesAllScrolls('');
+            } else {
+                let config = createConfigObject(event.target.value);
+                let users = JSON.parse(localStorage.getItem('users'));
+                users.push(config);
+                localStorage.setItem('users', JSON.stringify(users));
+                parent.innerHTML = '';
+            }
+        }
+    });
+    input.addEventListener('mouseout', function() {
+        parent.innerHTML = '';
+        closesAllScrolls('');
+    });
+}
+function deleteUser(userName) {
+    let users = JSON.parse(localStorage.getItem('users'));
+    console.log(users.length);
+    if (userName !== 'default') {
+        for (let i = 0; i < users.length; i += 1) {
+            console.log(i)
+            if (users[i].name === userName && users[i].name !== 'default') {
+                users.splice(i,1);
+                localStorage.setItem('users', JSON.stringify(users));
+                return true;
+            }
+        }
+        return false;
+    }
+    return true;
+}
+//Articles
+
 //Code Execution.
 bgColorBtn.addEventListener('click', function(event) {
     colorOptions(event);
@@ -257,11 +338,17 @@ lineSpaceBtn.addEventListener('dblclick', function(event) {
     sizeByTyping(event, 'lineHeight');
 });
 articleTitle.addEventListener('dblclick', function(event) {
-    changeTitle(event, 'titleInputClass');
+    changeTitle(event);
 });
 article.addEventListener('dblclick', function(event) {
     changesText(event);
 });
+usersBtn.addEventListener('click', function(event) {
+    userBar(event);
+});
 usersBtn.addEventListener('dblclick', function(event) {
-
+    AddUser(event);
+});
+articlesBtn.addEventListener('dblclick', function(event) {
+    AddUser(event);
 });

@@ -114,6 +114,15 @@ li {
     right: 20px;
     cursor: pointer;
 }
+.userButtonInputAdjustment {
+    position: relative;
+    bottom: 46px;
+}
+.selected {
+    background-color: wheat;
+    color: black;
+    box-shadow: 2px 2px black;
+}
 
 /*Main*/
 #pagesHeader {
