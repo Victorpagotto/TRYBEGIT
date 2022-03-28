@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+
+  </header>
+  <form action="" method="get">
+    <div class="element-line">
+      <label for="name">Name <input type="text" name="name" id="name" placeholder="Insert your name."></label>
+    </div>
+    <div class="element-line">
+      <label for="email">E-mail <input type="email" name="email" id="email" placeholder="Insert your e-mail account"></label>
+    </div>
+    <div class="element-line">
+      <label for="type1"><input class="checker" type="radio" name="type" id="type1" value="city">City</label>
+      <label for="type2"><input class="checker" type="radio" name="type" id="type2" value="country">Country</label>
+      <label for="type3"><input class="checker" type="radio" name="type" id="type3" value="beach">Beach</label>
+      <label for="type4"><input class="checker" type="radio" name="type" id="type4" value="mountains">Mountains</label>
+    </div>
+    <div class="element-line">
+      <p>Why would you be the developer who should win the Trybetrp?</p>
+    </div>
+    <div class="element-line">
+      <textarea name="motives" id="motives" cols="60" rows="15"></textarea>
+    </div>
+    <div class="element-line">
+      <label for="date">Best Date for Trip  <input type="date" name="date" id="date"></label>
+    </div>
+    <div class="element-line">
+      <label for="rights"><input required class="checker" type="checkbox" name="rights" id="rights">Concordo que imagens das minhas férias poderão ser usadas na divulgação de concursos futuros.</label>
+    </div>
+    <div class="element-line">
+      <button type="submit" id="submit" class="bottomBtn">submit</button>
+      <button id="clearBtn" class="bottomBtn">clear</button>
+    </div>
+  </form>
+</body>
+<script src="script.js"></script>
+</html>
