@@ -1,0 +1,189 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: rgb(228, 228, 228);
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+/* Header */
+
+header {
+  background-color: antiquewhite;
+  margin: auto;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#bookTitle {
+  font-size: 1.6em;
+  font-weight: 700;
+  font-family: 'Dancing Script', cursive;
+  border-bottom: solid 1px black;
+  border-radius: 8px;
+  height: 60px;
+}
+
+.header-container nav {
+  flex-basis: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+.header-container nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 700;
+  list-style-type: none;
+}
+
+/* Asides */
+
+#asides {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 1220px;
+}
+
+aside {
+  font-family: 'Montserrat', sans-serif; 
+}
+
+aside h2 {
+  font-size: 1.3em;
+  text-align: center;
+}
+
+aside ul, aside ol {
+  font-size: 1.2em;
+  line-height: 25px;
+}
+
+.aside-one ul {
+  list-style-type: circle;
+  padding-left: 55px;
+}
+
+.aside-two ol{
+  list-style-type: upper-roman;
+}
+
+/* Article */
+
+article {
+  width: 90%;
+  margin: auto;
+  text-align: justify;
+  font-size: 1.4em;
+}
+
+article h1 {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+.chapter {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: antiquewhite;
+}
+
+@media screen and (min-width: 912px) {
+  aside {
+    width: auto;
+    flex-basis: 40%;
+    margin-left: 20px;
+  }
+
+  #asides {
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  footer div {
+    max-width: 912px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #bookTitle {
+    display: flex;
+    align-items: center;
+    border-top: solid 1px black;
+    padding: auto 100px;
+  }
+
+  header {
+    max-width: 1220px;
+  }
+
+  .header-container {
+    height: 100px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  body {
+    background-color: rgb(90, 90, 90);
+  }
+
+  .container {
+    background-color: rgb(228, 228, 228);
+    max-width: 1220px;
+    margin: auto;
+  }
+
+  .header-container nav {
+    flex-basis: 20%;
+  }
+
+  footer {
+    max-width: 1220px;
+    margin: auto;
+  }
+}
