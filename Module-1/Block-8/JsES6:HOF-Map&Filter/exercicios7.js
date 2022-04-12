@@ -15,4 +15,8 @@ function authorWith3DotsOnName(books) {
   return books.filter((book) => book.author.name.split(' ').slice(0, 3).filter((char) => char.endsWith('.')).length === 3).map((book) => book.name);
 }
 
-console.log(authorWith3DotsOnName(books));
+function anotherWay(books) {
+  return books.filter((book) => book.author.name.match(/(\D\.\s){3}|(\D\.\s){2}\D\./g))
+}
+
+console.log(anotherWay(books));

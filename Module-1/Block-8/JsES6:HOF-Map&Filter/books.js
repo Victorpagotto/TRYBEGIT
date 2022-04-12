@@ -34,7 +34,7 @@ module.exports = [
     name: 'Duna',
     genre: 'Ficção Científica',
     author: {
-      name: 'Frank Herbert',
+      name: 'Frank Herbert G. R. R.',
       birthYear: 1920,
     },
     releaseYear: 1965,
