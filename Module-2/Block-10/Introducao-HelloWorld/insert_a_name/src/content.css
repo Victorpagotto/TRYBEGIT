@@ -1,0 +1,11 @@
+.liContent {
+  background-color: orange;
+  padding: 20px;
+  margin-bottom: 10px;
+  border: solid black 4px;
+  border-radius: 25px;
+  width: 420px;
+  font-size: 1.2em;
+  font-weight: 700;
+  list-style: none;
+}
