@@ -1,0 +1,9 @@
+version: '3'
+services:
+    html:
+        build: ./html
+        restart: on-failure
+        ports:
+            - 1234:80
+        volumes:
+            - ./html/data/:/usr/local/apache2/htdocs/

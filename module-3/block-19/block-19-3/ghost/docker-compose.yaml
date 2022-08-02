@@ -1,0 +1,38 @@
+version: '3'
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+            MYSQL_USER: batata
+            MYSQL_DATABASE: ghost
+        ports:
+            - 3306:3306
+        networks:
+            - my-network
+    ghost:
+        depends_on:
+            - mysql
+        image: ghost:1-alpine
+        container_name: ghost
+        restart: always
+        ports:
+            - 2368:2368
+        volumes:
+            - datalog:/var/lib/mysql
+        environment:
+            database__client: mysql
+            database__connection__database: ghost
+            database__connection__host: mysql
+            database__connection__user: batata
+            database__connection__password: root
+        networks:
+            - my-network
+
+volumes:
+    datalog:
+    
+networks:
+    my-network:
